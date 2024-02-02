@@ -1,9 +1,3 @@
-Ravneet Singh Bhatia
-
-
-
-
-
 ### Assignment 2
 
 
