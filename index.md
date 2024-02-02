@@ -1,5 +1,3 @@
-# CS 360
-
 Ravneet Singh Bhatia
 
 
