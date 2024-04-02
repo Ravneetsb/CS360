@@ -6,7 +6,7 @@ const svg = d3.select("body").append("svg").attr("viewBox", `0 0 ${width} ${heig
 const projection = d3.geoEquirectangular();
 
 const path = d3.geoPath()
-.projection(projection);
+    .projection(projection);
 
 const mapData = new Map();
 
@@ -19,8 +19,7 @@ Promise.all([
     let topo = loadData[0];
     console.log(loadData[1]);
 
-    const ColorScale = d3.scaleSequential(d3.interpolateBlues)
-        .domain([0, 400]);
+    const top10 = ["HI", "CA", "NY", "OR", "MA", "AK", "MD", "CT", "NJ", "RI"];
 
     svg.append("g")
         .selectAll("path")
@@ -29,11 +28,10 @@ Promise.all([
         .append("path")
         .attr("d", path)
         .style("stroke", "black")
-        .style("fill", "white")
+        .style("fill", d => top10.includes(d.properties.name)?"yellow":"white")
         .style("stroke-width", 0.1)
         .append("title")
         .text(d => {
-            // console.log(d.properties.name);
             return `${d.properties.name}`;
         });
 
