@@ -52,5 +52,4 @@ Promise.all([
         .text(d => {
             return `Cost of housing in ${d}: ${mapData.get(d).cost}`;
         });
-
-})
+});
