@@ -52,13 +52,4 @@ Promise.all([
         .text(d => {
             return `Cost of housing in ${d}: ${mapData.get(d).cost}`;
         });
-
-    const zoom = d3.zoom()
-        .scaleExtent([1, 8])
-        .on('zoom', function(event) {
-            svg.selectAll('path')
-                .attr('transform', event.transform);
-        });
-
-    svg.call(zoom);
 });
