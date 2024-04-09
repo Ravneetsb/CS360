@@ -144,7 +144,7 @@ d3.csv('data/penguins.csv', (d) => {
         .attr('class', 'title')
         .attr('x', width / 2)
         .attr('y', marginTop - 10)
-        .text('Gentoo Penguins have clear clustering when comparing Flipper and Culmen Length.')
+        .text('Gentoo Penguins have clear clustering when comparing Flipper Length and Culmen Depth.')
         .style('font-size', '20px')
         .style('text-anchor', 'middle')
         .style('font-family', 'Arial');
