@@ -12,19 +12,16 @@ d3.csv('data/smoking.csv', (d) => {
         smokers: d.Total,
     };
 }).then((data) => {
-    const svg = d3
-        .select('#chart')
+    const svg = d3.select('#chart')
         .append('svg')
         .attr('height', height)
         .attr('width', width);
 
-    const x = d3
-        .scaleTime()
+    const x = d3.scaleTime()
         .domain(d3.extent(data, (d) => d.year))
         .range([marginLeft, width - marginRight]);
 
-    const y = d3
-        .scaleLinear()
+    const y = d3.scaleLinear()
         .domain([0, 12])
         .range([height - marginTop, marginBottom]);
 
@@ -36,13 +33,11 @@ d3.csv('data/smoking.csv', (d) => {
         'World',
     ];
 
-    const color = d3
-        .scaleOrdinal()
+    const color = d3.scaleOrdinal()
         .domain(countries)
         .range(['red', 'steelblue', 'green', 'black', 'grey']);
 
-    svg
-        .append('g')
+    svg.append('g')
         .attr('class', 'axis')
         .attr(
             'transform',
@@ -50,16 +45,14 @@ d3.csv('data/smoking.csv', (d) => {
         )
         .call(d3.axisBottom(x));
 
-    svg
-        .append('g')
+    svg.append('g')
         .attr('class', 'axis')
         .attr('transform', `translate(${marginLeft}, 0)`)
         .call(d3.axisLeft(y));
 
     const nestedData = d3.group(data, (d) => d.country);
 
-    svg
-        .selectAll('.path')
+    svg.selectAll('.path')
         .data(countries)
         .enter()
         .append('path')
@@ -74,8 +67,7 @@ d3.csv('data/smoking.csv', (d) => {
                 .y((d) => y(d.smokers))(nestedData.get(d)),
         );
 
-    var legendOrdinal = d3
-        .legendColor()
+    var legendOrdinal = d3.legendColor()
         .shape(
             'path',
             d3.symbol().type(d3.symbolTriangle).size(150)(),
@@ -83,8 +75,7 @@ d3.csv('data/smoking.csv', (d) => {
         .shapePadding(10)
         .scale(color);
 
-    svg
-        .append('g')
+    svg.append('g')
         .attr('class', 'legend')
         .attr(
             'transform',
@@ -92,8 +83,7 @@ d3.csv('data/smoking.csv', (d) => {
         )
         .call(legendOrdinal);
 
-    svg
-        .append('text')
+    svg.append('text')
         .attr('class', 'ylabel')
         .attr('x', -height / 2)
         .attr('y', marginLeft / 2)
@@ -103,8 +93,7 @@ d3.csv('data/smoking.csv', (d) => {
         .style('text-anchor', 'middle')
         .style('font-family', 'Arial');
 
-    svg
-        .append('text')
+    svg.append('text')
         .attr('class', 'xlabel')
         .attr('x', width / 2)
         .attr('y', height - 10)
@@ -113,8 +102,7 @@ d3.csv('data/smoking.csv', (d) => {
         .style('text-anchor', 'middle')
         .style('font-family', 'Arial');
 
-    svg
-        .append('text')
+    svg.append('text')
         .attr('class', 'title')
         .attr('x', width / 2)
         .attr('y', marginTop - 10)
